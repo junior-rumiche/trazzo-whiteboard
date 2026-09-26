@@ -92,6 +92,9 @@ export const metadata: Metadata = {
     ],
   },
   category: "productivity",
+  verification: {
+    google: "0vDxt0U570AAai5uQjBWLTmgrNOM_5RQn8NVDq3ZcIE",
+  },
 };
 
 const jsonLd = {

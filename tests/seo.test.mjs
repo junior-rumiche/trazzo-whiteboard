@@ -59,6 +59,7 @@ test("SEO - layout.tsx defines rich metadata and OpenGraph configuration", () =>
   assert.ok(layoutCode.includes("viewport"), "Viewport must be defined");
   assert.ok(layoutCode.includes("apple:"), "Metadata must define apple touch icon");
   assert.ok(layoutCode.includes("/favicon.ico"), "Metadata must reference favicon.ico");
+  assert.ok(layoutCode.includes("0vDxt0U570AAai5uQjBWLTmgrNOM_5RQn8NVDq3ZcIE"), "Metadata must include Google site verification code");
 });
 
 test("SEO - page.tsx includes crawlable semantic HTML and noscript fallback", () => {
