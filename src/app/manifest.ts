@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Trazzo — Pizarra Virtual y Diagramas",
     short_name: "Trazzo",
     description:
-      "Pizarra virtual interactiva y herramienta de diagramación en tu navegador. Rápida, privada y sin registro.",
+      "Trazzo Whiteboard — Pizarra virtual interactiva y herramienta de diagramación en tu navegador. Rápida, privada, gratuita y sin registro.",
     start_url: "/",
     display: "standalone",
     background_color: "#fbfbfe",

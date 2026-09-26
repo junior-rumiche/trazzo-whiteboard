@@ -105,3 +105,56 @@ test("SEO & Compliance - Codebase contains zero forbidden third-party trademarks
 
   dirsToScan.forEach(scanDir);
 });
+
+test("SEO - Trazzo Whiteboard branding and bilingual keywords are properly integrated", () => {
+  const layoutPath = path.resolve("src/app/layout.tsx");
+  const layoutCode = fs.readFileSync(layoutPath, "utf-8");
+
+  // Verify Trazzo Whiteboard branding
+  assert.ok(layoutCode.includes("Trazzo Whiteboard"), "Layout must feature Trazzo Whiteboard");
+  assert.ok(layoutCode.includes('name: "Trazzo Whiteboard"'), "WebApplication schema must use Trazzo Whiteboard");
+
+  // Verify bilingual keyword coverage
+  const expectedKeywords = [
+    "Trazzo Whiteboard",
+    "pizarra virtual",
+    "pizarra virtual online",
+    "diagramas de flujo",
+    "diagramas de arquitectura",
+    "virtual whiteboard",
+    "online whiteboard",
+    "flowchart maker online",
+    "online diagramming tool",
+    "software architecture diagram",
+    "wireframes",
+    "bocetos a mano alzada",
+    "hand-drawn diagrams",
+    "whiteboard no sign up",
+  ];
+
+  for (const kw of expectedKeywords) {
+    assert.ok(
+      layoutCode.includes(`"${kw}"`),
+      `Layout keywords must include high-impact term: ${kw}`
+    );
+  }
+
+  // Verify page.tsx features Trazzo Whiteboard
+  const pagePath = path.resolve("src/app/page.tsx");
+  const pageCode = fs.readFileSync(pagePath, "utf-8");
+  assert.ok(
+    pageCode.includes("<h1>Trazzo Whiteboard"),
+    "page.tsx H1 must feature Trazzo Whiteboard"
+  );
+  assert.ok(
+    pageCode.includes("Trazzo Whiteboard"),
+    "page.tsx must feature Trazzo Whiteboard"
+  );
+
+  // Verify manifest description features Trazzo Whiteboard
+  const manifest = manifestConfig();
+  assert.ok(
+    manifest.description?.includes("Trazzo Whiteboard"),
+    "Manifest description must feature Trazzo Whiteboard"
+  );
+});

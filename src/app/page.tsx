@@ -23,41 +23,51 @@ function AppContent() {
   return (
     <main className="relative w-screen h-screen overflow-hidden bg-neutral-50 text-neutral-900">
       {/* Semantic Accessible SEO Section for Search Engine Indexing and Screen Readers */}
-      <section aria-label="Información y características de Trazzo" className="sr-only">
-        <h1>Trazzo — Pizarra Virtual Gratuita, Diagramación y Dibujo en Línea</h1>
+      <section aria-label="Información y características de Trazzo Whiteboard" className="sr-only">
+        <h1>Trazzo Whiteboard — Pizarra Virtual Gratuita, Diagramación y Dibujo en Línea</h1>
         <p>
-          Trazzo es una herramienta web de pizarra virtual y diagramas interactivos diseñada para
-          crear bocetos a mano alzada, diagramas de arquitectura de software, diagramas de flujo,
-          wireframes y mapas conceptuales con total privacidad en tu navegador.
+          Trazzo Whiteboard es una herramienta web de pizarra virtual y diagramas interactivos diseñada para
+          crear diagramas de flujo, arquitectura de software, diagramas de sistemas, wireframes, mapas conceptuales
+          y bocetos a mano alzada con total privacidad y almacenamiento local en tu navegador.
+        </p>
+        <p>
+          Free online virtual whiteboard for quick sketch drawing, software architecture, flowcharts,
+          system design, and low-fidelity wireframing with instant local storage and no account required.
         </p>
 
-        <h2>Principales Características de Trazzo</h2>
+        <h2>Principales Características de Trazzo Whiteboard / Features</h2>
         <ul>
-          <li>Lienzo infinito con zoom y desplazamiento suave.</li>
+          <li>Lienzo infinito con zoom y desplazamiento suave (Infinite canvas).</li>
           <li>Figuras geométricas: rectángulos, rombos, círculos, elipses, flechas y líneas rectas.</li>
-          <li>Conectores magnéticos inteligentes que se adhieren y siguen el movimiento de las figuras.</li>
-          <li>Dibujo libre con trazos fluidos estilo boceto orgánico.</li>
-          <li>Reconocimiento inteligente de figuras dibujadas a mano.</li>
+          <li>Conectores magnéticos inteligentes que siguen el movimiento de las figuras (Smart connectors).</li>
+          <li>Dibujo libre con trazos fluidos estilo boceto orgánico (Hand-drawn sketching).</li>
+          <li>Reconocimiento inteligente de figuras geométricas dibujadas a mano (Shape recognition).</li>
           <li>Puntero láser dinámico con estela para presentaciones y exposiciones.</li>
-          <li>Marcos (frames) para estructurar vistas de pantalla y diagramas modulares.</li>
+          <li>Marcos (frames) para estructurar vistas de pantalla, wireframes y diagramas modulares.</li>
           <li>Inserción de texto multilínea, imágenes y selección por lazo.</li>
           <li>Exportación a PNG de alta resolución, gráficos vectoriales SVG y archivos .trazzo.</li>
-          <li>100% privado y seguro: todos tus proyectos se guardan localmente en tu navegador.</li>
+          <li>100% privado y seguro: todos tus proyectos se guardan localmente en tu navegador sin registro.</li>
         </ul>
 
-        <h2>Pizarra Virtual sin Registro y de Código Libre</h2>
+        <h2>Pizarra Virtual sin Registro, Gratuita y Privada (No Sign-Up Whiteboard)</h2>
         <p>
-          Sin necesidad de crear cuentas ni compartir datos personales. Trazzo arranca al instante y
-          mantiene tus ideas protegidas en tu equipo.
+          Sin necesidad de crear cuentas ni compartir datos personales. Trazzo Whiteboard arranca al instante y
+          mantiene tus ideas protegidas en tu equipo con almacenamiento local offline-first.
+        </p>
+
+        <h2>Diagramas de Flujo, Arquitectura de Software y Prototipos Rápidos</h2>
+        <p>
+          Herramienta ideal para ingenieros de software, diseñadores, educadores y equipos que necesitan
+          diseñar arquitectura de sistemas, diagramas UML, flujos de procesos y prototipos rápidos de interfaz.
         </p>
       </section>
 
       <noscript>
         <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-white text-neutral-900 text-center">
           <div className="max-w-md">
-            <h2 className="text-xl font-bold mb-2">JavaScript es necesario para usar Trazzo</h2>
+            <h2 className="text-xl font-bold mb-2">JavaScript es necesario para usar Trazzo Whiteboard</h2>
             <p className="text-sm text-neutral-600 mb-4">
-              Trazzo es una pizarra virtual interactiva de alto rendimiento en el navegador. Por
+              Trazzo Whiteboard es una pizarra virtual interactiva de alto rendimiento en el navegador. Por
               favor, activa JavaScript en la configuración de tu navegador para acceder al lienzo de
               dibujo y diagramación.
             </p>
@@ -74,7 +84,7 @@ function AppContent() {
       <ZoomControls />
       {/* Semantic Accessible Footer with Quick Information */}
       <footer className="absolute bottom-4 left-4 z-10 hidden md:flex items-center gap-2 px-3 py-1.5 rounded-2xl shadow-xl shadow-neutral-900/5 dark:shadow-black/40 backdrop-blur-xl border border-neutral-200/80 dark:border-neutral-800 bg-white/90 dark:bg-neutral-900/90 text-[11px] text-neutral-600 dark:text-neutral-400 select-none pointer-events-auto">
-        <span className="font-semibold text-neutral-800 dark:text-neutral-200">Trazzo</span>
+        <span className="font-semibold text-neutral-800 dark:text-neutral-200">Trazzo Whiteboard</span>
         <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-700" />
         <span>Pizarra Virtual y Diagramas en Línea</span>
         <span className="w-1 h-1 rounded-full bg-neutral-300 dark:bg-neutral-700" />

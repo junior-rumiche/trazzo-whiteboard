@@ -84,8 +84,8 @@ export function Header() {
             <div className="w-7 h-7 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-violet-500 text-white shadow-sm shadow-indigo-500/25 flex items-center justify-center">
               <Brush size={15} />
             </div>
-            <h1 className="font-bold text-sm tracking-tight text-neutral-900 dark:text-neutral-50 m-0">
-              Trazzo
+            <h1 className="font-bold text-sm tracking-tight text-neutral-900 dark:text-neutral-50 m-0 whitespace-nowrap">
+              Trazzo <span className="text-indigo-600 dark:text-indigo-400 font-medium">Whiteboard</span>
             </h1>
           </div>
 

@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "nodejs";
 
-export const alt = "Trazzo — Pizarra Virtual, Diagramas y Bocetos a Mano Alzada";
+export const alt = "Trazzo Whiteboard — Pizarra Virtual, Diagramas y Bocetos a Mano Alzada";
 export const size = {
   width: 1200,
   height: 630,
@@ -80,7 +80,7 @@ export default function Image() {
           </div>
           <span
             style={{
-              fontSize: "56px",
+              fontSize: "52px",
               fontWeight: 800,
               letterSpacing: "-0.03em",
               background: "linear-gradient(to right, #ffffff, #e0e7ff)",
@@ -88,14 +88,14 @@ export default function Image() {
               color: "transparent",
             }}
           >
-            Trazzo
+            Trazzo Whiteboard
           </span>
         </div>
 
         {/* Headline */}
         <h1
           style={{
-            fontSize: "44px",
+            fontSize: "42px",
             fontWeight: 800,
             textAlign: "center",
             lineHeight: 1.2,
@@ -111,15 +111,15 @@ export default function Image() {
         {/* Subtitle */}
         <p
           style={{
-            fontSize: "22px",
+            fontSize: "21px",
             color: "#94a3b8",
             textAlign: "center",
-            maxWidth: "800px",
+            maxWidth: "840px",
             margin: "0 0 36px 0",
             lineHeight: 1.5,
           }}
         >
-          Lienzo infinito, diagramas inteligentes, figuras geométricas y dibujo libre.
+          Lienzo infinito, diagramas de arquitectura, diagramas de flujo, wireframes y bocetos a mano alzada.
           100% privado en tu navegador, sin registro y exportación a PNG y SVG.
         </p>
 

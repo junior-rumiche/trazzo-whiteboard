@@ -1,6 +1,6 @@
-# Trazzo 🎨
+# Trazzo Whiteboard 🎨
 
-**Trazzo** es una pizarra virtual de dibujo vectorial y bocetos a mano alzada moderna, ultrarrápida, 100% privada y construida desde cero con **Next.js**, **TypeScript**, **Tailwind CSS**, **Rough.js** y **Perfect Freehand**.
+**Trazzo Whiteboard** es una pizarra virtual de dibujo vectorial, diagramación en línea y bocetos a mano alzada moderna, ultrarrápida, 100% privada y construida desde cero con **Next.js**, **TypeScript**, **Tailwind CSS**, **Rough.js** y **Perfect Freehand**. Diseñada para crear diagramas de flujo, diagramas de arquitectura de software, wireframes y bocetos sin registro.
 
 ---
 
