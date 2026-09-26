@@ -41,6 +41,7 @@ const SHORTCUT_GROUPS = [
       { key: "Ctrl + D", desc: "Duplicar selección" },
       { key: "Ctrl + A", desc: "Seleccionar todo" },
       { key: "Espacio + Arrastre", desc: "Desplazar lienzo libremente" },
+      { key: "Shift + 1", desc: "Centrar contenido en pantalla" },
       { key: "Ctrl + Rueda", desc: "Acercar / Alejar zoom" },
       { key: "Arrastrar archivo", desc: "Importar archivo .trazzo" },
       { key: "Escape", desc: "Cancelar / Deseleccionar" },

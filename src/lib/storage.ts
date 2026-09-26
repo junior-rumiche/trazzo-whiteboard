@@ -1,4 +1,4 @@
-import { Board, TrazzoElement, ToolProperties } from "../types/canvas";
+import type { Board, TrazzoElement, ToolProperties } from "../types/canvas.ts";
 
 const STORAGE_KEY_BOARDS = "trazzo_boards_v1";
 const STORAGE_KEY_ACTIVE = "trazzo_active_board_id_v1";
@@ -35,8 +35,8 @@ export function createDefaultBoard(name: string = "Pizarra Principal"): Board {
     {
       id: createId(),
       type: "rectangle",
-      x: 180,
-      y: 140,
+      x: 380,
+      y: 160,
       width: 480,
       height: 240,
       strokeColor: "#6366f1",
@@ -51,11 +51,11 @@ export function createDefaultBoard(name: string = "Pizarra Principal"): Board {
     {
       id: createId(),
       type: "text",
-      x: 210,
-      y: 170,
+      x: 410,
+      y: 190,
       width: 420,
       height: 160,
-      text: "¡Bienvenido a Trazzo!\n\n• Dibuja libremente con lápiz o figuras\n• Exporta como PNG o archivo .trazzo\n• Guarda y gestiona múltiples pizarras\n• Todo 100% local, rápido y sin registro",
+      text: "¡Bienvenido a Trazzo Whiteboard!\n\n• Dibuja libremente con lápiz o figuras\n• Exporta como PNG o archivo .trazzo\n• Guarda y gestiona múltiples pizarras\n• Todo 100% local, rápido y sin registro",
       strokeColor: "#1e1e24",
       fillColor: "transparent",
       fillStyle: "none",
@@ -70,8 +70,8 @@ export function createDefaultBoard(name: string = "Pizarra Principal"): Board {
     {
       id: createId(),
       type: "arrow",
-      x: 720,
-      y: 260,
+      x: 920,
+      y: 280,
       width: 140,
       height: -60,
       strokeColor: "#ec4899",
@@ -86,8 +86,8 @@ export function createDefaultBoard(name: string = "Pizarra Principal"): Board {
     {
       id: createId(),
       type: "ellipse",
-      x: 880,
-      y: 150,
+      x: 1080,
+      y: 170,
       width: 160,
       height: 120,
       strokeColor: "#10b981",
@@ -102,8 +102,8 @@ export function createDefaultBoard(name: string = "Pizarra Principal"): Board {
     {
       id: createId(),
       type: "text",
-      x: 900,
-      y: 195,
+      x: 1100,
+      y: 215,
       width: 120,
       height: 40,
       text: "¡Pruébame!",

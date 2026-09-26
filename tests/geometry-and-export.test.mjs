@@ -884,6 +884,35 @@ test("Text Draft - Property update while editing updates active text draft", () 
   assert.equal(editingText.strokeColor, "#e03131");
 });
 
+test("Initial Board - Welcome elements start beyond left properties panel (minX >= 350)", async () => {
+  const { createDefaultBoard } = await import("../src/lib/storage.ts");
+  const board = createDefaultBoard();
+  assert.ok(board.elements.length >= 4, "Should have welcome elements");
+  const minX = Math.min(...board.elements.map(el => el.x));
+  assert.ok(minX >= 350, `Expected minX >= 350 to clear left properties panel, got ${minX}`);
+});
+
+test("Center Content - Calculates balanced offset accounting for left properties panel", () => {
+  const bounds = { minX: 380, minY: 160, maxX: 1240, maxY: 400, width: 860, height: 240 };
+  const screenWidth = 1920;
+  const screenHeight = 1080;
+  const leftOffset = 280;
+  const topOffset = 70;
+  const availWidth = screenWidth - leftOffset;
+
+  const targetScreenCenterX = leftOffset + availWidth / 2;
+  const contentCenterX = bounds.minX + bounds.width / 2;
+  const newX = Math.round(targetScreenCenterX - contentCenterX * 1);
+
+  const renderedMinX = bounds.minX + newX;
+  const spaceBefore = renderedMinX - leftOffset;
+  const renderedMaxX = bounds.maxX + newX;
+  const spaceAfter = screenWidth - renderedMaxX;
+
+  assert.ok(spaceBefore > 200, "Should have ample clearance from left properties panel");
+  assert.ok(Math.abs(spaceBefore - spaceAfter) <= 5, "Content should be symmetrically balanced in open space");
+});
+
 
 
 

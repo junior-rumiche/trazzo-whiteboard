@@ -106,7 +106,7 @@ export function ZoomControls() {
       {/* Center View */}
       <button
         onClick={resetZoom}
-        title="Centrar vista"
+        title="Centrar contenido en pantalla (Shift + 1)"
         className="p-1.5 rounded-xl hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-200 transition-colors"
       >
         <RotateCcw size={13} />

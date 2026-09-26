@@ -42,6 +42,7 @@ export function Canvas() {
     viewTransform,
     setViewTransform,
     setZoom,
+    centerContent,
     panBy,
     activeTool,
     setActiveTool,
@@ -237,6 +238,31 @@ export function Canvas() {
     window.addEventListener("resize", updateCanvasSize);
     return () => window.removeEventListener("resize", updateCanvasSize);
   }, [updateCanvasSize]);
+
+  // Auto-center content on initial load so it is never obstructed by the floating left properties panel
+  const hasAutoCenteredRef = useRef(false);
+  const activeBoardIdRef = useRef(activeBoard.id);
+
+  useEffect(() => {
+    if (activeBoardIdRef.current !== activeBoard.id) {
+      activeBoardIdRef.current = activeBoard.id;
+      hasAutoCenteredRef.current = false;
+    }
+
+    if (hasAutoCenteredRef.current) return;
+
+    if (elements.length > 0) {
+      if (viewTransform.x === 0 && viewTransform.y === 0) {
+        const timer = setTimeout(() => {
+          centerContent();
+          hasAutoCenteredRef.current = true;
+        }, 50);
+        return () => clearTimeout(timer);
+      } else {
+        hasAutoCenteredRef.current = true;
+      }
+    }
+  }, [activeBoard.id, elements.length, viewTransform.x, viewTransform.y, centerContent]);
 
   // Main Render Loop
   useEffect(() => {
@@ -572,6 +598,16 @@ export function Canvas() {
       if (e.shiftKey && key === "x") {
         e.preventDefault();
         setActiveTool("draw-to-shape");
+        return;
+      }
+
+      // Center Content in View (Shift + 1 or Ctrl/Cmd + 0)
+      if (
+        (e.shiftKey && (e.key === "!" || e.key === "1")) ||
+        ((e.ctrlKey || e.metaKey) && e.key === "0")
+      ) {
+        e.preventDefault();
+        centerContent();
         return;
       }
 

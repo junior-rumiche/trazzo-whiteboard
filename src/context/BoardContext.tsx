@@ -24,7 +24,7 @@ import {
   saveToolProperties,
   saveTheme,
 } from "../lib/storage";
-import { getElementBounds } from "../lib/geometry";
+import { getElementBounds, getCombinedBounds } from "../lib/geometry";
 import { AnchorPosition } from "../types/canvas";
 import { ToastContainer, ToastItem, ToastType } from "../components/Toast";
 import { ConfirmModal, ConfirmDialogState } from "../components/ConfirmModal";
@@ -48,6 +48,7 @@ interface BoardContextType {
   setViewTransform: React.Dispatch<React.SetStateAction<ViewTransform>>;
   setZoom: (zoom: number, center?: Point) => void;
   resetZoom: () => void;
+  centerContent: (customElements?: TrazzoElement[]) => void;
   panBy: (dx: number, dy: number) => void;
 
   activeTool: Tool;
@@ -299,9 +300,58 @@ export function BoardProvider({ children }: { children: React.ReactNode }) {
     [setViewTransform]
   );
 
+  const centerContent = useCallback(
+    (customElements?: TrazzoElement[]) => {
+      if (typeof window === "undefined") return;
+      const targetElements = (customElements || activeBoard.elements || []).filter((el) => !el.isDeleted);
+      if (targetElements.length === 0) {
+        setViewTransform({ x: 0, y: 0, zoom: 1 });
+        return;
+      }
+      const bounds = getCombinedBounds(targetElements);
+      if (!bounds) {
+        setViewTransform({ x: 0, y: 0, zoom: 1 });
+        return;
+      }
+
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
+
+      // On desktop (>= 768px), the properties panel sits at left-4 with w-64 (256px + 16px + buffer = 280px).
+      // Top header/toolbar occupies ~70px.
+      const leftOffset = screenWidth >= 768 ? 280 : 0;
+      const topOffset = 70;
+      const bottomOffset = 40;
+
+      const availWidth = Math.max(300, screenWidth - leftOffset);
+      const availHeight = Math.max(200, screenHeight - topOffset - bottomOffset);
+
+      // Desired center in unobstructed screen space
+      const targetScreenCenterX = leftOffset + availWidth / 2;
+      const targetScreenCenterY = topOffset + availHeight / 2;
+
+      // Content center in world/canvas coordinates
+      const contentCenterX = bounds.minX + bounds.width / 2;
+      const contentCenterY = bounds.minY + bounds.height / 2;
+
+      // If content is bigger than available viewport, scale it gently to fit with padding
+      const padding = 50;
+      const scaleX = (availWidth - padding * 2) / Math.max(1, bounds.width);
+      const scaleY = (availHeight - padding * 2) / Math.max(1, bounds.height);
+      const idealZoom = Math.min(1, Math.min(scaleX, scaleY));
+      const clampedZoom = Math.min(2, Math.max(0.2, Math.round(idealZoom * 100) / 100));
+
+      const newX = Math.round(targetScreenCenterX - contentCenterX * clampedZoom);
+      const newY = Math.round(targetScreenCenterY - contentCenterY * clampedZoom);
+
+      setViewTransform({ x: newX, y: newY, zoom: clampedZoom });
+    },
+    [activeBoard.elements, setViewTransform]
+  );
+
   const resetZoom = useCallback(() => {
-    setViewTransform((prev) => ({ ...prev, zoom: 1, x: 0, y: 0 }));
-  }, [setViewTransform]);
+    centerContent();
+  }, [centerContent]);
 
   const panBy = useCallback(
     (dx: number, dy: number) => {
@@ -914,6 +964,7 @@ export function BoardProvider({ children }: { children: React.ReactNode }) {
         setViewTransform,
         setZoom,
         resetZoom,
+        centerContent,
         panBy,
         activeTool,
         setActiveTool,
