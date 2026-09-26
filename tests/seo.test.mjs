@@ -27,8 +27,8 @@ test("SEO - sitemap.ts generates valid root entry with optimal priority", () => 
 
 test("SEO - manifest.ts provides PWA metadata", () => {
   const manifest = manifestConfig();
-  assert.strictEqual(manifest.name, "Trazzo — Pizarra Virtual y Diagramas");
-  assert.strictEqual(manifest.short_name, "Trazzo");
+  assert.strictEqual(manifest.name, "Trazzo Whiteboard — Pizarra Virtual y Diagramas");
+  assert.strictEqual(manifest.short_name, "Trazzo Whiteboard");
   assert.strictEqual(manifest.display, "standalone");
   assert.ok(Array.isArray(manifest.icons) && manifest.icons.length >= 3, "Manifest must have standard icons (192, 512, svg)");
   assert.ok(manifest.icons.some(i => i.sizes === "192x192"), "Must have 192x192 icon for mobile install");
@@ -57,6 +57,7 @@ test("SEO - layout.tsx defines rich metadata and OpenGraph configuration", () =>
   assert.ok(layoutCode.includes("twitter"), "Metadata must configure twitter card");
   assert.ok(layoutCode.includes("keywords"), "Metadata must provide keywords");
   assert.ok(layoutCode.includes("viewport"), "Viewport must be defined");
+  assert.ok(layoutCode.includes("appleWebApp"), "Metadata must configure appleWebApp");
   assert.ok(layoutCode.includes("apple:"), "Metadata must define apple touch icon");
   assert.ok(layoutCode.includes("/favicon.ico"), "Metadata must reference favicon.ico");
   assert.ok(layoutCode.includes("0vDxt0U570AAai5uQjBWLTmgrNOM_5RQn8NVDq3ZcIE"), "Metadata must include Google site verification code");

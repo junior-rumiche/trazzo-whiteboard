@@ -29,6 +29,8 @@ export const metadata: Metadata = {
     // Virtual Whiteboard (ES)
     "pizarra virtual",
     "pizarra virtual online",
+    "pizarra online",
+    "pizarra online gratis",
     "pizarra virtual gratis",
     "pizarra digital interactiva",
     "pizarra blanca online",
@@ -50,6 +52,7 @@ export const metadata: Metadata = {
     "browser whiteboard",
     "whiteboard no sign up",
     "private local whiteboard",
+    "free whiteboard",
 
     // Diagramming & Architecture (ES)
     "diagramas de flujo",
@@ -57,6 +60,8 @@ export const metadata: Metadata = {
     "diagramas de arquitectura",
     "diagramas de arquitectura de software",
     "diagramas de sistemas",
+    "diagramas online",
+    "crear diagramas de flujo",
     "herramienta de diagramación",
     "conectores inteligentes",
     "mapas conceptuales",
@@ -69,6 +74,8 @@ export const metadata: Metadata = {
     "software architecture diagram",
     "system design diagrams",
     "flowchart maker online",
+    "free flowchart maker",
+    "diagram maker",
     "concept map online",
     "smart connectors flowchart",
     "cloud architecture diagram",
@@ -97,11 +104,17 @@ export const metadata: Metadata = {
     "export SVG PNG whiteboard",
     "offline whiteboard",
     "private canvas no tracking",
+    "private whiteboard",
   ],
   authors: [{ name: "Trazzo Whiteboard", url: siteUrl }],
   creator: "Trazzo Whiteboard",
   publisher: "Trazzo Whiteboard",
   applicationName: "Trazzo Whiteboard",
+  appleWebApp: {
+    capable: true,
+    title: "Trazzo Whiteboard",
+    statusBarStyle: "default",
+  },
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   formatDetection: {
@@ -113,7 +126,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Trazzo Whiteboard — Pizarra Virtual Gratuita y Diagramas en Línea",
+    title: "Trazzo Whiteboard — Pizarra Virtual Gratuita y Diagramas en Línea | Free Online Whiteboard",
     description:
       "Trazzo Whiteboard: Pizarra virtual interactiva y herramienta de diagramación en tu navegador. Diseña diagramas de flujo, arquitectura de software, wireframes y bocetos a mano alzada con almacenamiento local privado y sin registro.",
     url: siteUrl,
@@ -132,7 +145,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trazzo Whiteboard — Pizarra Virtual Gratuita y Diagramas en Línea",
+    title: "Trazzo Whiteboard — Pizarra Virtual Gratuita y Diagramas en Línea | Free Online Whiteboard",
     description:
       "Trazzo Whiteboard: Pizarra virtual interactiva para diagramas de flujo, arquitectura y bocetos a mano alzada. 100% privada en tu navegador.",
     creator: "@trazzoapp",

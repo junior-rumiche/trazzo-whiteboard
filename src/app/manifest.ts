@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Trazzo — Pizarra Virtual y Diagramas",
-    short_name: "Trazzo",
+    name: "Trazzo Whiteboard — Pizarra Virtual y Diagramas",
+    short_name: "Trazzo Whiteboard",
     description:
       "Trazzo Whiteboard — Pizarra virtual interactiva y herramienta de diagramación en tu navegador. Rápida, privada, gratuita y sin registro.",
     start_url: "/",

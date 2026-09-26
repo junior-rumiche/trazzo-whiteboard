@@ -34,8 +34,7 @@
 - **Lienzo Infinito**:
   - Zoom interactivo con rueda del ratón (`Ctrl + Rueda`) o controles flotantes (+, -, 100%).
   - Paneo suave en cualquier dirección.
-  - Cuadrícula de puntos sutil activable/desactivable.
-  - Modo Oscuro y Modo Claro.
+  - Modo claro permanente y minimalista con fondo blanco/marfil libre de distracciones.
   - Deshacer (`Ctrl+Z`) y Rehacer (`Ctrl+Y`).
 - **Exportación e Importación**:
   - 🖼️ **Exportar a PNG**: Guarda tu pizarra como imagen con fondo blanco, oscuro o transparente, con resolución de alta definición (2x).

@@ -13,7 +13,7 @@ const Canvas = dynamic(() => import("../components/Canvas").then((mod) => mod.Ca
     <div className="w-full h-full flex items-center justify-center bg-neutral-50 text-neutral-600">
       <div className="flex flex-col items-center gap-3">
         <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-        <span className="text-sm font-medium">Cargando lienzo de Trazzo...</span>
+        <span className="text-sm font-medium">Cargando lienzo de Trazzo Whiteboard...</span>
       </div>
     </div>
   ),
