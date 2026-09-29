@@ -62,10 +62,38 @@ const SLOPPINESS = [
 ];
 
 const FONT_FAMILIES = [
-  { id: FONT_HAND, label: "Virgil", title: "Manuscrito (Virgil / Caveat)", font: "Caveat, cursive" },
-  { id: FONT_SANS, label: "Normal", title: "Normal Sans (Inter)", font: "system-ui, sans-serif" },
-  { id: FONT_CODE, label: "Código", title: "Monoespaciado (Code)", font: "monospace" },
+  { id: FONT_HAND, label: "A mano", title: "Manuscrito (Caveat)", font: "Caveat, cursive" },
+  { id: FONT_SANS, label: "Normal", title: "Normal Sans (Inter)", font: "'Inter', system-ui, sans-serif" },
+  { id: FONT_CODE, label: "Código", title: "Monoespaciado (Code)", font: "'JetBrains Mono', monospace" },
 ];
+
+function isFontFamilyMatch(current: string | undefined, target: string): boolean {
+  if (!current) return target === FONT_HAND;
+  if (current === target) return true;
+  const normCurrent = current.replace(/['"]/g, "").toLowerCase();
+  const normTarget = target.replace(/['"]/g, "").toLowerCase();
+  if (normTarget.includes("caveat")) {
+    return normCurrent.includes("caveat") || normCurrent.includes("cursive");
+  }
+  if (normTarget.includes("inter") || normTarget.includes("system-ui")) {
+    return (
+      normCurrent.includes("inter") ||
+      normCurrent.includes("system-ui") ||
+      normCurrent.includes("sans-serif") ||
+      normCurrent.includes("segoe") ||
+      normCurrent.includes("arial")
+    );
+  }
+  if (normTarget.includes("jetbrains") || normTarget.includes("mono")) {
+    return (
+      normCurrent.includes("jetbrains") ||
+      normCurrent.includes("mono") ||
+      normCurrent.includes("courier") ||
+      normCurrent.includes("monospace")
+    );
+  }
+  return false;
+}
 
 const FONT_SIZES = [
   { label: "S", value: 16, title: "Pequeño (16px)" },
@@ -316,14 +344,14 @@ export function PropertiesPanel() {
         {/* Text Properties (Font family, Font size, Text alignment) */}
         {isTextElement && (
           <div className="space-y-3.5 pt-2 border-t border-neutral-200/70 dark:border-neutral-800/70">
-            {/* Font Family (Virgil, Sans, Code) */}
+            {/* Font Family (Hand, Sans, Code) */}
             <div>
               <label className="block text-[11px] font-semibold tracking-wider uppercase text-neutral-400 dark:text-neutral-500 mb-2">
                 Tipografía
               </label>
               <div className="grid grid-cols-3 gap-1.5">
                 {FONT_FAMILIES.map((f) => {
-                  const isSelected = currentFontFamily === f.id;
+                  const isSelected = isFontFamilyMatch(currentFontFamily, f.id);
                   return (
                     <button
                       key={f.label}

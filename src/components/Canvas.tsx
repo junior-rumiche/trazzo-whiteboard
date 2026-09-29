@@ -264,6 +264,31 @@ export function Canvas() {
     }
   }, [activeBoard.id, elements.length, viewTransform.x, viewTransform.y, centerContent]);
 
+  // Ensure canvas re-renders immediately whenever custom web fonts finish loading
+  const [fontVersion, setFontVersion] = useState(0);
+
+  useEffect(() => {
+    if (typeof document !== "undefined" && document.fonts) {
+      // Actively request loading of canvas fonts so they are immediately available
+      Promise.allSettled([
+        document.fonts.load("20px Caveat"),
+        document.fonts.load("20px Inter"),
+        document.fonts.load("20px 'JetBrains Mono'"),
+      ]).then(() => {
+        setFontVersion((v) => v + 1);
+      });
+
+      const onLoadingDone = () => {
+        setFontVersion((v) => v + 1);
+      };
+      document.fonts.addEventListener("loadingdone", onLoadingDone);
+      document.fonts.ready.then(onLoadingDone);
+      return () => {
+        document.fonts.removeEventListener("loadingdone", onLoadingDone);
+      };
+    }
+  }, []);
+
   // Main Render Loop
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -408,6 +433,7 @@ export function Canvas() {
     snapAnchor,
     laserTick,
     lassoSlate,
+    fontVersion,
   ]);
 
   // Keyboard navigation & shortcuts
@@ -785,7 +811,7 @@ export function Canvas() {
                 width,
                 height,
                 fontSize,
-                fontFamily: draft.fontFamily,
+                fontFamily: draft.fontFamily || FONT_HAND,
                 strokeColor: draft.strokeColor,
                 textAlign: align,
               }
@@ -804,7 +830,7 @@ export function Canvas() {
         height,
         text,
         fontSize,
-        fontFamily: draft.fontFamily,
+        fontFamily: draft.fontFamily || FONT_HAND,
         strokeColor: draft.strokeColor,
         fillColor: "transparent",
         fillStyle: "none",

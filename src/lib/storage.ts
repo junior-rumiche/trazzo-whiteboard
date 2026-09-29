@@ -63,8 +63,8 @@ export function createDefaultBoard(name: string = "Pizarra Principal"): Board {
       strokeStyle: "solid",
       roughness: 1,
       opacity: 1,
-      fontSize: 22,
-      fontFamily: "Caveat, cursive, sans-serif",
+      fontSize: 20,
+      fontFamily: FONT_SANS,
       seed: 83719,
     },
     {
@@ -115,7 +115,7 @@ export function createDefaultBoard(name: string = "Pizarra Principal"): Board {
       roughness: 1,
       opacity: 1,
       fontSize: 20,
-      fontFamily: "Caveat, cursive, sans-serif",
+      fontFamily: FONT_SANS,
       seed: 92831,
     },
   ];
@@ -143,6 +143,21 @@ export function loadBoardsFromStorage(): Board[] {
     }
     const parsed = JSON.parse(raw);
     if (Array.isArray(parsed) && parsed.length > 0) {
+      for (const board of parsed) {
+        if (board.elements) {
+          for (const el of board.elements) {
+            if (
+              el.type === "text" &&
+              (el.text?.includes("¡Bienvenido a Trazzo") || el.text === "¡Pruébame!") &&
+              el.fontFamily &&
+              el.fontFamily.includes("Caveat")
+            ) {
+              el.fontFamily = FONT_SANS;
+              if (el.fontSize > 20) el.fontSize = 20;
+            }
+          }
+        }
+      }
       return parsed;
     }
     const fallback = createDefaultBoard();

@@ -305,12 +305,35 @@ export default function RootLayout({
   return (
     <html lang="es">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body className="antialiased w-screen h-screen overflow-hidden bg-[#fbfbfe] text-neutral-900 transition-colors">
+        {/* Hidden font preloader to ensure browser downloads web fonts during HTML parse for Canvas */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: "absolute",
+            width: 0,
+            height: 0,
+            overflow: "hidden",
+            pointerEvents: "none",
+            opacity: 0,
+            zIndex: -1,
+          }}
+        >
+          <span style={{ fontFamily: "Caveat" }}>.</span>
+          <span style={{ fontFamily: "Inter" }}>.</span>
+          <span style={{ fontFamily: "'JetBrains Mono'" }}>.</span>
+        </div>
         {children}
       </body>
     </html>

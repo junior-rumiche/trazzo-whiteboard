@@ -458,7 +458,7 @@ export function renderElement(
       const lines = (element.text || "").split("\n");
       const fontSize = element.fontSize || 20;
       const lineHeight = fontSize * 1.35;
-      ctx.font = `${fontSize}px ${element.fontFamily || "Caveat, 'Segoe UI', cursive, sans-serif"}`;
+      ctx.font = `${fontSize}px ${element.fontFamily || "Caveat, cursive, sans-serif"}`;
       ctx.fillStyle = resolvedStroke;
       ctx.textBaseline = "top";
 

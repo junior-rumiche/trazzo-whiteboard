@@ -33,7 +33,12 @@ export function exportBoardToPng(
 
       // Ensure custom fonts are loaded before drawing text
       if (typeof document !== "undefined" && document.fonts) {
-        await document.fonts.ready;
+        await Promise.allSettled([
+          document.fonts.load("20px Caveat"),
+          document.fonts.load("20px Inter"),
+          document.fonts.load("20px 'JetBrains Mono'"),
+          document.fonts.ready,
+        ]);
       }
 
       const bounds = getCombinedBounds(activeElements);
